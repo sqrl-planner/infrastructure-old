@@ -24,7 +24,7 @@ variable "hcloud_token" {
 
 
 provider "hcloud" {
-  token = vars.hcloud_token
+  token = var.hcloud_token
 }
 
 # resource "hcloud_network" "network" {
