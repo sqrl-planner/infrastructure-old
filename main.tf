@@ -27,10 +27,6 @@ provider "hcloud" {
   token = var.hcloud_token
 }
 
-resource "hcloud_ssh_key" "eamon_key" {
-  name = "eamon_key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO2UGRoGNRda03FC6YzqYUFLmh6UGMtLoOUZrOOq2kN2 m@eamonma.com"
-}
 
 # resource "hcloud_primary_ip" "main" {
 #   name          = "main"
