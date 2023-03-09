@@ -39,6 +39,11 @@ provider "hcloud" {
 #   ip_range     = "10.0.1.0/24"
 # # }
 
+resource "hcloud_ssh_key" "eamon_key" {
+  name = "eamon_key"
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO2UGRoGNRda03FC6YzqYUFLmh6UGMtLoOUZrOOq2kN2 m@eamonma.com"
+}
+
 resource "hcloud_primary_ip" "main" {
   name          = "main"
   datacenter    = "ash-dc1"
@@ -52,6 +57,11 @@ resource "hcloud_server" "web1" {
   image       = "ubuntu-22.04"
   server_type = "cpx11"
   datacenter  = "ash-dc1"
+
+  ssh_keys = [
+    hcloud_ssh_key.eamon_key.id
+  ]
+
   public_net {
     ipv4_enabled = true
     ipv6_enabled = true
